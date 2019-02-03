@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 class Api::V1::TasksController < ApplicationController
-  before_action :set_task, only: [
-    :show, :update, :destroy
-  ]
+  before_action :set_task, only: %i[show update destroy]
 
   def index
     render json: Task.order(created_at: :desc).all

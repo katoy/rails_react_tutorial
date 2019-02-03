@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class HomeController < ActionController::Base
   include ActionController::RequestForgeryProtection
   include ActionController::ImplicitRender
   include ActionView::Layouts
 
-  layout "application"
+  layout 'application'
 
   def index
   end

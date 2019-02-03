@@ -7,3 +7,21 @@ See
 
 - https://tackeyy.com/blog/posts/token-base-api-with-rails-and-devise-token-auth
   [Rails5] devise_token_auth でAPIを作成する / 新規登録・ログイン  
+
+```
+$ rails db:delete
+$ rails db:crete
+$ rails migrate
+
+$ bundle exec rubocop
+
+$ bundle exec rspec spec/acceptance --format RspecApiDocumentation::ApiFormatter
+$ bundle exec rspec
+
+$ brakeman
+```
+
+```
+$ ./bin/webpack-dev-server
+$ rails s
+```
