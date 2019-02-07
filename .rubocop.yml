@@ -1,6 +1,7 @@
 inherit_from:
   - .rubocop-todo.yml
 
+
 Metrics/LineLength:
   Max: 100
 
@@ -30,6 +31,10 @@ AndOr:
 Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
 
 AllCops:
   Exclude:

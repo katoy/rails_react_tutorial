@@ -8,7 +8,7 @@ ruby '2.6.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -32,7 +32,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# gem 'apitome'
+
 group :development, :test do
+  gem 'raddocs'
+  gem 'rspec_api_documentation'
+  gem 'rails-erd'
 end
 
 group :test do
@@ -40,7 +45,6 @@ group :test do
   gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'rspec-rails'
-  gem 'rspec_api_documentation'
 
   gem 'pry-rails'
   gem 'pry-byebug'

@@ -4,11 +4,13 @@ require 'rails_helper'
 require 'rspec_api_documentation/dsl'
 
 resource 'Tasks' do
-  before do
-    FactoryBot.create_list(:task, 2)
-  end
+  let(:task) { Task.create(title: 'Old Name', description: 'Old Description') }
 
   get '/api/v1/tasks' do
+    before do
+      FactoryBot.create_list(:task, 2)
+    end
+
     example_request 'Listing tasks' do
       expect(response_body).to eq(Task.order(created_at: :desc).all.to_json)
       expect(status).to eq(200)
@@ -16,37 +18,41 @@ resource 'Tasks' do
   end
 
   get '/api/v1/tasks/:id' do
-    let(:task) { Task.first }
     let(:id) { task.id }
 
     example_request 'Getting a specific Task' do
-      #expect(response.keys)
-      #  .to eq %w[id title description created_at updated_at]
       expect(response_body).to eq(task.to_json)
       expect(status).to eq(200)
     end
   end
 
-  post '/api/v1/tasks/:id' do
-    let(:id) { Task.first.id }
-    let(:title) { 'title_updated' }
-    let(:description) { 'memo_updated' }
+  put '/api/v1/tasks/:id' do
+    let(:id) { task.id }
+    let(:request) { { title: 'New Title', description: 'New Description' } }
 
-    # TODO: 未実装
-    #example_request 'Updating a task' do
-    #  do_request(title: title, description: description)
-    #  response = JSON.parse(response_body)
-    #  expect(response['title']).to eq title
-    #  expect(response['description']).to eq description
-    #  expect(status).to eq(200)
-    #end
+    example 'Updating an task' do
+      do_request(request)
+      expect(status).to eq 200
+      expect(response_body).to eq(Task.first.to_json)
+    end
+  end
+
+  post '/api/v1/tasks' do
+    let(:request) { { title: 'New Title', description: 'New Description' } }
+
+    example 'Create an task' do
+      do_request(request)
+      expect(status).to eq 200
+      expect(response_body).to eq(Task.first.to_json)
+    end
   end
 
   delete '/api/v1/tasks/:id' do
-    let(:id) { Task.first.id }
+    let(:id) { task.id }
 
     example_request 'Deleting a task' do
       expect(status).to eq(204)
+      expect(Task.exists?(id: id)).to eq false
     end
   end
 end

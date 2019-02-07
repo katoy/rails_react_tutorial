@@ -16,10 +16,15 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require 'rspec_api_documentation'
 require 'factory_bot'
 require 'simplecov'
 SimpleCov.start 'rails'
 SimpleCov.minimum_coverage 80
+
+RspecApiDocumentation.configure do |config|
+  config.format = :json
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

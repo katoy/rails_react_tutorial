@@ -8,20 +8,47 @@ See
 - https://tackeyy.com/blog/posts/token-base-api-with-rails-and-devise-token-auth
   [Rails5] devise_token_auth でAPIを作成する / 新規登録・ログイン  
 
+- https://www.storyblok.com/tp/rspec-api-documentation
+  How we use RSpec to automatically generate API documentations
+
+DB の初期化と、アプリの起動。
+
 ```
+$ bundle install
 $ rails db:delete
-$ rails db:crete
+$ rails db:create
 $ rails migrate
 
-$ bundle exec rubocop
-
-$ bundle exec rspec spec/acceptance --format RspecApiDocumentation::ApiFormatter
-$ bundle exec rspec
-
-$ brakeman
-```
-
-```
 $ ./bin/webpack-dev-server
 $ rails s
+# open http://localhost:3000
+```
+
+テストをすると API ドキュメントができる。
+(ソースコードとドキュメントがズレることがない)
+
+```
+$ rails docs:generate
+# then
+#   $ rails s
+#   open http://localhost:3000/docs
+```
+
+その他の各種ツールの実行。
+
+```
+$ bundle exec rubocop
+
+$ bundle exec brakeman
+
+$ bundle exec rspec
+$ open coverage/index.html
+
+$ bundle exec erd
+$ open erd.pdf
+```
+
+```
+$ rails log:clear
+$ rails tmp:clear
 ```
