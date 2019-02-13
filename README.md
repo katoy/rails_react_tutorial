@@ -17,7 +17,8 @@ DB の初期化と、アプリの起動。
 $ bundle install
 $ rails db:delete
 $ rails db:create
-$ rails migrate
+$ rails db:migrate
+$ rails db:seed_fu
 
 $ ./bin/webpack-dev-server
 $ rails s

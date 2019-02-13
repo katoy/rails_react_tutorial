@@ -38,14 +38,16 @@ group :development, :test do
   gem 'raddocs'
   gem 'rspec_api_documentation'
   gem 'rails-erd'
-end
-
-group :test do
   gem 'simplecov', require: false
   gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'rspec-rails'
+  gem 'ffaker'
+  gem 'gimei'
+  gem 'phonelib'
+  gem 'seed-fu'
 
+  gem 'awesome_print'
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'

@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_202546) do
+ActiveRecord::Schema.define(version: 2019_02_10_084842) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title", limit: 256, null: false
     t.string "description", limit: 1024, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title", "description"], name: "index_tasks_on_title_and_description", unique: true
   end
 
 end
