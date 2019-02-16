@@ -47,6 +47,10 @@ group :development, :test do
   gem 'phonelib'
   gem 'seed-fu'
 
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
+  gem 'capybara'
+
   gem 'awesome_print'
   gem 'pry-rails'
   gem 'pry-byebug'
@@ -63,4 +67,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+# gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

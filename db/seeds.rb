@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-Taks.create(title: 'test', description: 'memo')
+Task.create(title: 'test', description: 'memo')
