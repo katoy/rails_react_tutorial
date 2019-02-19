@@ -71,7 +71,8 @@ RSpec.configure do |config|
   config.before(:each) do |example|
     if example.metadata[:type] == :system
       if example.metadata[:js]
-        driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
+        driven_by :selenium_chrome_headless, screen_size: [1400, 900],
+          options: { args: %w[headless disable-gpu] }
       else
         driven_by :rack_test
       end

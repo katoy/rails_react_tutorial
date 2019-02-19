@@ -21,6 +21,15 @@ See
 - https://qiita.com/g-fujioka/items/091c400814800f1280ff
   Capybara+headless-chrome でフルサイズのスクリーンショットを撮る
 
+- https://softwarebrothers.co/blog/apiary-documentation-rspec-api-doc-generator/
+  APIARY DOCUMENTATION WITH RSPEC API DOC GENERATOR
+
+- https://qiita.com/kai_kou/items/630f6c1e4e577518bd14
+  api blueprintとaglioを利用してAPI仕様書を作成する
+
+- https://www.npmjs.com/package/aglio-theme-api
+  Aglio Default Theme  
+
 DB の初期化と、アプリの起動。
 
 ```
@@ -37,29 +46,48 @@ $ rails s
 
 spec/acceptance のテストを実行すると API ドキュメントができる。
 (ソースコードとドキュメントがズレることがない)
+doc/apo/index.apib に blueprint 形式で生成されるようにしてある。
 
 ```
+$ npm install -g aglio
+
 $ rails docs:generate
-# then
-#   $ rails s
-#   open http://localhost:3000/docs
+($ bundle exec rspec spec/acceptance -f RspecApiDocumentation::ApiFormatter)
+
+then
+  $ aglio -i doc/api/index.apib -o doc/api/index.html
+  ( $ aglio -i doc/api/index.apib -o doc/api/index.html --theme-template triple --theme-variables flatly)
+  $ open doc/api/index.html
+or
+  $ aglio -i doc/api/index.apib -s
+  then access http://localhost:3000
 ```
 
-テストの実行 (chrome headless で起動して system エストも行っている)
+生成結果例は [doc/api/index.html](https://htmlpreview.github.io/?https://github.com/katoy/rails_react_tutorial/blob/master/doc/api/index.html)
+
+
+テストの実行 (chrome headless で起動して system テストも行っている)  
+system テストで失敗すると、画面のスクリーンショットが ./tmp 以下に保存される。  
+いくつかのテストでは、成功した場合は、./scrennshots 以下に保存されるようにしてある。
 
 ```
 $ brew install chromedriver
-$ bundle exec rspec
+$ rails spec
+$ (bundle exec rspec)
 $ open coverage/index.html
 $ open screenshots/*.png
 ```
 
+スクリーンショット
 ![screenshots/home.png](screenshots/home.png)
 
 
 その他の各種ツールの実行。
 
 ```
+$ rails stats
+$ rails db:migrate:status
+
 $ bundle exec rubocop
 
 $ bundle exec brakeman

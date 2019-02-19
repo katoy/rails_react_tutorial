@@ -1,0 +1,276 @@
+FORMAT: 1A
+# API Documentation
+
+# Group Tasks
+
+Tasks resource
+
+## タスク削除 [/api/v1/tasks/{id}]
+
++ Parameters
+  + id: 1 (required, number) - タスクID
+
+### タスク削除 [DELETE]
+
++ Request  正当なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
+    + Body
+
+            {
+            }
+
++ Response 204 ()
+
+    + Headers
+
+            Cache-Control: no-cache
+            X-Request-Id: 14c25a10-e854-4c81-af9c-9d2b1751eb3e
+            X-Runtime: 0.003668
+
++ Request 不正なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
+    + Body
+
+            {
+            }
+
++ Response 404 (application/json)
+
+    + Headers
+
+            Cache-Control: no-cache
+            X-Request-Id: 582ade92-b66e-4e69-82e6-07dd3ba3f3b3
+            X-Runtime: 0.002873
+            Content-Length: 31
+
+    + Body
+
+            {
+              "error": "Task does not exist"
+            }
+
+## タスク更新 [/api/v1/tasks/{id}{?title,description}]
+
++ Parameters
+  + id: 1 (required, number) - タスクID
+  + title: レビュー (required, string) - タイトル
+  + description: XX機能について (required, string) - 概要
+
+### タスク更新 [PUT]
+
++ Request  正当なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
+    + Body
+
+            {
+              "title": "New Title",
+              "description": "New Description"
+            }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            ETag: W/"b06302ae97e212d35143c7afc7123bc9"
+            Cache-Control: max-age=0, private, must-revalidate
+            X-Request-Id: 8b04ce11-2630-4742-83ff-e30a28d591b4
+            X-Runtime: 0.006683
+            Content-Length: 140
+
+    + Body
+
+            {
+              "id": 1,
+              "title": "New Title",
+              "description": "New Description",
+              "created_at": "2019-02-19T15:18:03.347Z",
+              "updated_at": "2019-02-19T15:18:03.355Z"
+            }
+
++ Request 不正なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
+    + Body
+
+            {
+            }
+
++ Response 404 (application/json)
+
+    + Headers
+
+            Cache-Control: no-cache
+            X-Request-Id: d993b9f7-a58d-4495-bc80-b2de2c18d59c
+            X-Runtime: 0.003645
+            Content-Length: 31
+
+    + Body
+
+            {
+              "error": "Task does not exist"
+            }
+
+## タスク内容 [/api/v1/tasks/{id}]
+
++ Parameters
+  + id: 1 (required, number) - タスクID
+
+### タスク内容 [GET]
+
++ Request  正当なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
++ Response 200 (application/json)
+
+    + Headers
+
+            ETag: W/"0b00a911f2c3ba8ee145a40c2315b354"
+            Cache-Control: max-age=0, private, must-revalidate
+            X-Request-Id: 2fe5ac87-450e-40a2-a7c4-0d31fe476383
+            X-Runtime: 0.004110
+            Content-Length: 139
+
+    + Body
+
+            {
+              "id": 1,
+              "title": "Old Name",
+              "description": "Old Description",
+              "created_at": "2019-02-19T15:18:03.173Z",
+              "updated_at": "2019-02-19T15:18:03.173Z"
+            }
+
++ Request 不正なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
++ Response 404 (application/json)
+
+    + Headers
+
+            Cache-Control: no-cache
+            X-Request-Id: cd2f6749-257f-443b-9fc0-708e7a2ceec0
+            X-Runtime: 0.002982
+            Content-Length: 31
+
+    + Body
+
+            {
+              "error": "Task does not exist"
+            }
+
+## タスク登録 [/api/v1/tasks/{?title,description}]
+
++ Parameters
+  + title: レビュー (required, string) - タイトル
+  + description: XX機能について (required, string) - 概要
+
+### タスク登録 [POST]
+
++ Request 正当なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
+    + Body
+
+            {
+              "title": "New Title",
+              "description": "New Description"
+            }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            ETag: W/"034bd97e95a445a0df38ae22bf68ae21"
+            Cache-Control: max-age=0, private, must-revalidate
+            X-Request-Id: 05fa2664-1dfb-4dc1-b686-e9f973482d3e
+            X-Runtime: 0.005681
+            Content-Length: 140
+
+    + Body
+
+            {
+              "id": 1,
+              "title": "New Title",
+              "description": "New Description",
+              "created_at": "2019-02-19T15:18:03.019Z",
+              "updated_at": "2019-02-19T15:18:03.019Z"
+            }
+
+## タスクの一覧 [/api/v1/tasks]
+
+### タスクの一覧 [GET]
+
++ Request 正当なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
++ Response 200 (application/json)
+
+    + Headers
+
+            ETag: W/"3d453c9fd5e8c7c6c5ced425b1c6ad65"
+            Cache-Control: max-age=0, private, must-revalidate
+            X-Request-Id: 12556ccf-c27f-4b44-bb41-fc8511796887
+            X-Runtime: 0.281492
+            Content-Length: 261
+
+    + Body
+
+            [
+              {
+                "id": 2,
+                "title": "Title_2",
+                "description": "memo_2",
+                "created_at": "2019-02-19T15:18:01.977Z",
+                "updated_at": "2019-02-19T15:18:01.977Z"
+              },
+              {
+                "id": 1,
+                "title": "Title_1",
+                "description": "memo_1",
+                "created_at": "2019-02-19T15:18:01.832Z",
+                "updated_at": "2019-02-19T15:18:01.832Z"
+              }
+            ]

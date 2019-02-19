@@ -23,7 +23,8 @@ SimpleCov.start 'rails'
 SimpleCov.minimum_coverage 80
 
 RspecApiDocumentation.configure do |config|
-  config.format = :json
+  # config.format = %i[json combined_text]
+  config.format = :api_blueprint
 end
 
 RSpec.configure do |config|

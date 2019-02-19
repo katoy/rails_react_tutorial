@@ -8,8 +8,12 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create!(task_params)
-    render json: @task
+    @task = Task.create(task_params)
+    if @task
+      render json: @task
+    else
+      render(json: @task.errors, status: 400)
+    end
   end
 
   def show
@@ -17,8 +21,11 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def update
-    @task.update(task_params)
-    render json: @task
+    if @task.update(task_params)
+      render json: @task.reload
+    else
+      render(json: @task.errors, status: 400)
+    end
   end
 
   def destroy
@@ -34,5 +41,7 @@ class Api::V1::TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Task does not exist' }, status: :not_found
   end
 end
