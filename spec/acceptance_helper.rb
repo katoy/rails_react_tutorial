@@ -7,7 +7,7 @@ require 'rspec_api_documentation/dsl'
 RspecApiDocumentation.configure do |config|
   config.curl_host = 'http://localhost:3000'
   config.api_name = 'Rails_React_Tutorial API'
-  config.api_explanation = 'API 仕様書
+  config.api_explanation = 'API 仕様書'
 
   config.request_body_formatter = :json
   config.request_headers_to_include = %w[Content-Type Accept]

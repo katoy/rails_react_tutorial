@@ -2,13 +2,14 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.3.1",
+    "flog": "0.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "reactstrap": "^7.1.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "3.2.0"
   }
 }

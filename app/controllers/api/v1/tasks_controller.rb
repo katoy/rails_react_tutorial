@@ -8,11 +8,12 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create(task_params)
-    if @task
-      render json: @task
-    else
+    @task = Task.new(task_params)
+    if @task.invalid?
       render(json: @task.errors, status: 400)
+    else
+      @task.save!
+      render json: @task
     end
   end
 

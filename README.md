@@ -51,7 +51,8 @@ doc/apo/index.apib に blueprint 形式で生成されるようにしてある�
 ```
 $ npm install -g aglio
 
-$ rails docs:generate
+$ rails docs:generate  
+#  or rails rake docs:generate:ordered
 ($ bundle exec rspec spec/acceptance -f RspecApiDocumentation::ApiFormatter)
 
 then
@@ -92,8 +93,14 @@ $ bundle exec rubocop
 
 $ bundle exec brakeman
 
+$ yarn upgrade --latest
+$ yarn audit
+
 $ bundle exec erd
 $ open erd.pdf
+
+$ bundle exec metric_fu
+$ open tmp/metric_fu/output/index.html
 ```
 
 ```

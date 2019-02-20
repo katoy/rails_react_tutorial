@@ -5,12 +5,54 @@ FORMAT: 1A
 
 Tasks resource
 
-## タスク削除 [/api/v1/tasks/{id}]
+## タスクの一覧 [/api/v1/tasks]
+
+### タスクの一覧 [GET]
+
++ Request  正当なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
++ Response 200 (application/json)
+
+    + Headers
+
+            ETag: W/"31fdb4159d92fd03d4f1eac0bfce7cf3"
+            Cache-Control: max-age=0, private, must-revalidate
+            X-Request-Id: 01f81b4b-dbd5-4ff0-912c-9a0d2545216e
+            X-Runtime: 0.260162
+            Content-Length: 261
+
+    + Body
+
+            [
+              {
+                "id": 2,
+                "title": "Title_2",
+                "description": "memo_2",
+                "created_at": "2019-02-22T13:02:46.326Z",
+                "updated_at": "2019-02-22T13:02:46.326Z"
+              },
+              {
+                "id": 1,
+                "title": "Title_1",
+                "description": "memo_1",
+                "created_at": "2019-02-22T13:02:46.103Z",
+                "updated_at": "2019-02-22T13:02:46.103Z"
+              }
+            ]
+
+## タスク登録 [/api/v1/tasks{?title,description}]
 
 + Parameters
-  + id: 1 (required, number) - タスクID
+  + title: レビュー (required, string) - タイトル
+  + description: XX機能について (required, string) - 概要
 
-### タスク削除 [DELETE]
+### タスク登録 [POST]
 
 + Request  正当なパラメータ (application/json)
 
@@ -23,17 +65,31 @@ Tasks resource
     + Body
 
             {
+              "title": "New Title",
+              "description": "New Description"
             }
 
-+ Response 204 ()
++ Response 200 (application/json)
 
     + Headers
 
-            Cache-Control: no-cache
-            X-Request-Id: 14c25a10-e854-4c81-af9c-9d2b1751eb3e
-            X-Runtime: 0.003668
+            ETag: W/"36898880455246a3b326a120d7343a67"
+            Cache-Control: max-age=0, private, must-revalidate
+            X-Request-Id: 60b3da6f-cae2-48eb-a82f-3771390545df
+            X-Runtime: 0.006909
+            Content-Length: 140
 
-+ Request 不正なパラメータ (application/json)
+    + Body
+
+            {
+              "id": 1,
+              "title": "New Title",
+              "description": "New Description",
+              "created_at": "2019-02-22T13:02:47.454Z",
+              "updated_at": "2019-02-22T13:02:47.454Z"
+            }
+
++ Request 不正（empty） (application/json)
 
     + Headers
 
@@ -46,13 +102,111 @@ Tasks resource
             {
             }
 
++ Response 400 (application/json)
+
+    + Headers
+
+            Cache-Control: no-cache
+            X-Request-Id: e53fc0bb-0cbc-4074-8730-28640829aedd
+            X-Runtime: 0.426864
+            Content-Length: 61
+
+    + Body
+
+            {
+              "title": [
+                "can't be blank"
+              ],
+              "description": [
+                "can't be blank"
+              ]
+            }
+
++ Request 不正（too_long） (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
+    + Body
+
+            {
+              "title": "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+              "description": "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+            }
+
++ Response 400 (application/json)
+
+    + Headers
+
+            Cache-Control: no-cache
+            X-Request-Id: e27701d2-6620-4035-a0cf-464cc5f36085
+            X-Runtime: 0.004771
+            Content-Length: 112
+
+    + Body
+
+            {
+              "title": [
+                "is too long (maximum is 256 characters)"
+              ],
+              "description": [
+                "is too long (maximum is 1024 characters)"
+              ]
+            }
+
+## タスク内容 [/api/v1/tasks/{id}]
+
++ Parameters
+  + id: 1 (required, number) - タスクID
+
+### タスク内容 [GET]
+
++ Request  正当なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
++ Response 200 (application/json)
+
+    + Headers
+
+            ETag: W/"e8b5179cf445ce22eb97d0d5d22e9819"
+            Cache-Control: max-age=0, private, must-revalidate
+            X-Request-Id: e6b5b9e7-b253-472a-bfa4-acb0aee69edd
+            X-Runtime: 0.003521
+            Content-Length: 140
+
+    + Body
+
+            {
+              "id": 1,
+              "title": "Old Title",
+              "description": "Old Description",
+              "created_at": "2019-02-22T13:02:47.977Z",
+              "updated_at": "2019-02-22T13:02:47.977Z"
+            }
+
++ Request 不正（id） (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
 + Response 404 (application/json)
 
     + Headers
 
             Cache-Control: no-cache
-            X-Request-Id: 582ade92-b66e-4e69-82e6-07dd3ba3f3b3
-            X-Runtime: 0.002873
+            X-Request-Id: b8c30711-1bf7-4a6f-8909-81c745d8fcb7
+            X-Runtime: 0.002976
             Content-Length: 31
 
     + Body
@@ -89,10 +243,10 @@ Tasks resource
 
     + Headers
 
-            ETag: W/"b06302ae97e212d35143c7afc7123bc9"
+            ETag: W/"a70b12f1a2591064817b222b59fbe000"
             Cache-Control: max-age=0, private, must-revalidate
-            X-Request-Id: 8b04ce11-2630-4742-83ff-e30a28d591b4
-            X-Runtime: 0.006683
+            X-Request-Id: 34f64e75-f103-43eb-b76b-58f7376c9a56
+            X-Runtime: 0.007154
             Content-Length: 140
 
     + Body
@@ -101,11 +255,11 @@ Tasks resource
               "id": 1,
               "title": "New Title",
               "description": "New Description",
-              "created_at": "2019-02-19T15:18:03.347Z",
-              "updated_at": "2019-02-19T15:18:03.355Z"
+              "created_at": "2019-02-22T13:02:48.107Z",
+              "updated_at": "2019-02-22T13:02:48.158Z"
             }
 
-+ Request 不正なパラメータ (application/json)
++ Request 不正（empty） (application/json)
 
     + Headers
 
@@ -116,90 +270,31 @@ Tasks resource
     + Body
 
             {
+              "title": "",
+              "description": ""
             }
 
-+ Response 404 (application/json)
++ Response 400 (application/json)
 
     + Headers
 
             Cache-Control: no-cache
-            X-Request-Id: d993b9f7-a58d-4495-bc80-b2de2c18d59c
-            X-Runtime: 0.003645
-            Content-Length: 31
+            X-Request-Id: f1c940e4-ff99-432b-974e-19d8d085fea9
+            X-Runtime: 0.006761
+            Content-Length: 61
 
     + Body
 
             {
-              "error": "Task does not exist"
+              "title": [
+                "can't be blank"
+              ],
+              "description": [
+                "can't be blank"
+              ]
             }
 
-## タスク内容 [/api/v1/tasks/{id}]
-
-+ Parameters
-  + id: 1 (required, number) - タスクID
-
-### タスク内容 [GET]
-
-+ Request  正当なパラメータ (application/json)
-
-    + Headers
-
-            Accept: application/json
-            Host: example.org
-            Cookie: 
-
-+ Response 200 (application/json)
-
-    + Headers
-
-            ETag: W/"0b00a911f2c3ba8ee145a40c2315b354"
-            Cache-Control: max-age=0, private, must-revalidate
-            X-Request-Id: 2fe5ac87-450e-40a2-a7c4-0d31fe476383
-            X-Runtime: 0.004110
-            Content-Length: 139
-
-    + Body
-
-            {
-              "id": 1,
-              "title": "Old Name",
-              "description": "Old Description",
-              "created_at": "2019-02-19T15:18:03.173Z",
-              "updated_at": "2019-02-19T15:18:03.173Z"
-            }
-
-+ Request 不正なパラメータ (application/json)
-
-    + Headers
-
-            Accept: application/json
-            Host: example.org
-            Cookie: 
-
-+ Response 404 (application/json)
-
-    + Headers
-
-            Cache-Control: no-cache
-            X-Request-Id: cd2f6749-257f-443b-9fc0-708e7a2ceec0
-            X-Runtime: 0.002982
-            Content-Length: 31
-
-    + Body
-
-            {
-              "error": "Task does not exist"
-            }
-
-## タスク登録 [/api/v1/tasks/{?title,description}]
-
-+ Parameters
-  + title: レビュー (required, string) - タイトル
-  + description: XX機能について (required, string) - 概要
-
-### タスク登録 [POST]
-
-+ Request 正当なパラメータ (application/json)
++ Request 不正（id） (application/json)
 
     + Headers
 
@@ -214,31 +309,22 @@ Tasks resource
               "description": "New Description"
             }
 
-+ Response 200 (application/json)
++ Response 404 (application/json)
 
     + Headers
 
-            ETag: W/"034bd97e95a445a0df38ae22bf68ae21"
-            Cache-Control: max-age=0, private, must-revalidate
-            X-Request-Id: 05fa2664-1dfb-4dc1-b686-e9f973482d3e
-            X-Runtime: 0.005681
-            Content-Length: 140
+            Cache-Control: no-cache
+            X-Request-Id: f08cc257-393c-4670-b64f-1a707d545240
+            X-Runtime: 0.003815
+            Content-Length: 31
 
     + Body
 
             {
-              "id": 1,
-              "title": "New Title",
-              "description": "New Description",
-              "created_at": "2019-02-19T15:18:03.019Z",
-              "updated_at": "2019-02-19T15:18:03.019Z"
+              "error": "Task does not exist"
             }
 
-## タスクの一覧 [/api/v1/tasks]
-
-### タスクの一覧 [GET]
-
-+ Request 正当なパラメータ (application/json)
++ Request 不正（uniqness） (application/json)
 
     + Headers
 
@@ -246,31 +332,82 @@ Tasks resource
             Host: example.org
             Cookie: 
 
-+ Response 200 (application/json)
+    + Body
+
+            {
+              "title": "x Old Title",
+              "description": "x Old Description"
+            }
+
++ Response 400 (application/json)
 
     + Headers
 
-            ETag: W/"3d453c9fd5e8c7c6c5ced425b1c6ad65"
-            Cache-Control: max-age=0, private, must-revalidate
-            X-Request-Id: 12556ccf-c27f-4b44-bb41-fc8511796887
-            X-Runtime: 0.281492
-            Content-Length: 261
+            Cache-Control: no-cache
+            X-Request-Id: ed2558b5-3c2e-466e-b75f-691c816d5296
+            X-Runtime: 0.006459
+            Content-Length: 42
 
     + Body
 
-            [
-              {
-                "id": 2,
-                "title": "Title_2",
-                "description": "memo_2",
-                "created_at": "2019-02-19T15:18:01.977Z",
-                "updated_at": "2019-02-19T15:18:01.977Z"
-              },
-              {
-                "id": 1,
-                "title": "Title_1",
-                "description": "memo_1",
-                "created_at": "2019-02-19T15:18:01.832Z",
-                "updated_at": "2019-02-19T15:18:01.832Z"
-              }
-            ]
+            {
+              "description": [
+                "has already been taken"
+              ]
+            }
+
+## タスク削除 [/api/v1/tasks/{id}]
+
++ Parameters
+  + id: 1 (required, number) - タスクID
+
+### タスク削除 [DELETE]
+
++ Request  正当なパラメータ (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
+    + Body
+
+            {
+            }
+
++ Response 204 ()
+
+    + Headers
+
+            Cache-Control: no-cache
+            X-Request-Id: e2363877-4e82-4f48-aad9-b411d518b3ac
+            X-Runtime: 0.005108
+
++ Request 不正（id） (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Host: example.org
+            Cookie: 
+
+    + Body
+
+            {
+            }
+
++ Response 404 (application/json)
+
+    + Headers
+
+            Cache-Control: no-cache
+            X-Request-Id: 5b92e726-29d3-4450-b2c7-1f17fd36a086
+            X-Runtime: 0.003073
+            Content-Length: 31
+
+    + Body
+
+            {
+              "error": "Task does not exist"
+            }
