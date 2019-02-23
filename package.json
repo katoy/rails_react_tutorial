@@ -10,6 +10,7 @@
     "reactstrap": "^7.1.0"
   },
   "devDependencies": {
+    "aglio": "2.3.0",
     "webpack-dev-server": "3.2.0"
   }
 }

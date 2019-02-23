@@ -1,34 +1,5 @@
 
-See
-- https://qiita.com/kaishuu0123/items/00b89e092f156a02a3e5
-  Rails 5.1 API mode + webpacker + react + reactstrap で ToDO アプリを書く  
-
-- https://github.com/kaishuu0123/rails5.1-react-reactstrap-example
-  Rails 5.1 + webpacker + react + reactstrap Example
-
-- https://tackeyy.com/blog/posts/token-base-api-with-rails-and-devise-token-auth
-  [Rails5] devise_token_auth でAPIを作成する / 新規登録・ログイン  
-
-- https://www.storyblok.com/tp/rspec-api-documentation
-  How we use RSpec to automatically generate API documentations
-
-- https://github.com/everydayrails/everydayrails-rspec-2017
-  Everyday Rails Testing with RSpec sample application (2017 edition)
-
-- https://techracho.bpsinc.jp/hachi8833/2018_01_25/51101
-  Rails 5.1以降のシステムテストをRSpecで実行する（翻訳）
-
-- https://qiita.com/g-fujioka/items/091c400814800f1280ff
-  Capybara+headless-chrome でフルサイズのスクリーンショットを撮る
-
-- https://softwarebrothers.co/blog/apiary-documentation-rspec-api-doc-generator/
-  APIARY DOCUMENTATION WITH RSPEC API DOC GENERATOR
-
-- https://qiita.com/kai_kou/items/630f6c1e4e577518bd14
-  api blueprintとaglioを利用してAPI仕様書を作成する
-
-- https://www.npmjs.com/package/aglio-theme-api
-  Aglio Default Theme  
+![CircleCI (all branches)](https://img.shields.io/circleci/project/github/katoy/rails_react_tutorial.svg)
 
 DB の初期化と、アプリの起動。
 
@@ -107,3 +78,37 @@ $ open tmp/metric_fu/output/index.html
 $ rails log:clear
 $ rails tmp:clear
 ```
+
+See
+- https://qiita.com/kaishuu0123/items/00b89e092f156a02a3e5
+  Rails 5.1 API mode + webpacker + react + reactstrap で ToDO アプリを書く  
+
+- https://github.com/kaishuu0123/rails5.1-react-reactstrap-example
+  Rails 5.1 + webpacker + react + reactstrap Example
+
+- https://tackeyy.com/blog/posts/token-base-api-with-rails-and-devise-token-auth
+  [Rails5] devise_token_auth でAPIを作成する / 新規登録・ログイン  
+
+- https://www.storyblok.com/tp/rspec-api-documentation
+  How we use RSpec to automatically generate API documentations
+
+- https://github.com/everydayrails/everydayrails-rspec-2017
+  Everyday Rails Testing with RSpec sample application (2017 edition)
+
+- https://techracho.bpsinc.jp/hachi8833/2018_01_25/51101
+  Rails 5.1以降のシステムテストをRSpecで実行する（翻訳）
+
+- https://qiita.com/g-fujioka/items/091c400814800f1280ff
+  Capybara+headless-chrome でフルサイズのスクリーンショットを撮る
+
+- https://softwarebrothers.co/blog/apiary-documentation-rspec-api-doc-generator/
+  APIARY DOCUMENTATION WITH RSPEC API DOC GENERATOR
+
+- https://qiita.com/kai_kou/items/630f6c1e4e577518bd14
+  api blueprintとaglioを利用してAPI仕様書を作成する
+
+- https://www.npmjs.com/package/aglio-theme-api
+  Aglio Default Theme  
+
+- https://kakakakakku.hatenablog.com/entry/2018/08/08/200903
+  GitHub の README.md をバッジでオシャレにできる Shields.io と dockeri.co  
