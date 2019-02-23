@@ -1,5 +1,10 @@
 
-![CircleCI (all branches)](https://img.shields.io/circleci/project/github/katoy/rails_react_tutorial.svg)
+[![CircleCI](https://circleci.com/gh/katoy/rails_react_tutorial.svg?style=svg)](https://circleci.com/gh/katoy/rails_react_tutorial)
+
+これは、 rails アプリの テストと github 連携の設定の練習レポジトリーです。  
+react をつかった 小さな アプリのサンプルコードを利用しています。  
+上の バッジをクリックすると、circleci でのビルド結果とテスト結果を参照できます。  
+(github への push の度に build, testが実行されます。)  
 
 DB の初期化と、アプリの起動。
 
