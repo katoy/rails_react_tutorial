@@ -1,7 +1,7 @@
 version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
-    parallelism: 3 # run three instances of this job in parallel
+    parallelism: 1 # 3 # run three instances of this job in parallel
     docker: # run the steps with Docker
       - image: circleci/ruby:2.6.1-node-browsers-legacy  # ...with this image as the primary container; this is where all `steps` will run
         environment: # environment variables for primary container
@@ -87,6 +87,9 @@ jobs: # a collection of steps
             yarn aglio -i doc/api/index.apib -o doc/api/index.html \
                 --theme-template triple \
                 --theme-variables flatly
+      - store_artifacts:
+          path: doc
+
       - run:
           name: check brakeman
           command: |
