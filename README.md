@@ -118,3 +118,9 @@ See
 
 - https://kakakakakku.hatenablog.com/entry/2018/08/08/200903
   GitHub の README.md をバッジでオシャレにできる Shields.io と dockeri.co  
+
+- https://circleci.com/docs/2.0/code-coverage/#ruby
+  Viewing Coverage on CircleCI  
+
+- https://docs.codeclimate.com/docs/circle-ci-test-coverage-example#section-circleci-20-parallel-builds
+  CircleCI Test Coverage  

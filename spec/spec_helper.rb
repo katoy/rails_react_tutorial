@@ -19,6 +19,10 @@
 require 'rspec_api_documentation'
 require 'factory_bot'
 require 'simplecov'
+if ENV['CIRCLE_ARTIFACTS']
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')
+  SimpleCov.coverage_dir(dir)
+end
 SimpleCov.start 'rails'
 SimpleCov.minimum_coverage 1 # 80
 
