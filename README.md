@@ -76,6 +76,7 @@ $ bundle exec erd
 $ open erd.pdf
 
 $ bundle exec metric_fu
+  ($ bundle exec metric_fu --no-reek)
 $ open tmp/metric_fu/output/index.html
 ```
 
