@@ -389,6 +389,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  abstract_type
   awesome_print
   bootsnap (>= 1.1.0)
   brakeman
@@ -399,6 +400,7 @@ DEPENDENCIES
   ffaker
   gimei
   listen (>= 3.0.5, < 3.2)
+  memoizable
   metric_fu!
   phonelib
   pry-byebug

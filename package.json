@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "3.6.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "4.3.1",
     "flog": "0.0.1",
@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "aglio": "2.3.0",
-    "webpack-dev-server": "3.2.0"
+    "webpack-dev-server": "2.11.2"
   }
 }

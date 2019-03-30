@@ -49,6 +49,8 @@ group :development, :test do
   gem 'gimei'
   gem 'phonelib'
   gem 'seed-fu'
+  gem 'abstract_type'
+  gem 'memoizable'
 
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
