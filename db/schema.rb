@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_02_10_084842) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "tasks", force: :cascade do |t|
     t.string "title", limit: 256, null: false
     t.string "description", limit: 1024, null: false
