@@ -9,8 +9,8 @@ default: &default
   host: localhost
   encoding: utf8
   database: psgr_db
-  username: katoy
-  password: postgres
+  username: postgres
+  password:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
