@@ -6,6 +6,16 @@ react をつかった 小さな アプリのサンプルコードを利用して
 上の バッジをクリックすると、circleci でのビルド結果とテスト結果を参照できます。  
 (github への push の度に build, testが実行されます。)  
 
+postgresql の設定
+
+```
+$ brew install postgresql
+$ initdb /usr/local/var/postgres --encoding=UTF-8 --locale=ja_JP.UTF-8
+$ psql -U${USER} postgres
+  # create user postgres with SUPERUSER;
+  # \q
+``
+
 DB の初期化と、アプリの起動。
 
 ```
@@ -42,6 +52,17 @@ or
 
 生成結果例は [doc/api/index.html](https://htmlpreview.github.io/?https://github.com/katoy/rails_react_tutorial/blob/master/doc/api/index.html)
 
+
+DB 構造のドキュメントは以下のようにして生成し、閲覧ができる。
+
+```
+$ cd schemaspy
+$ ./run.sh
+$ open output/index.html
+```
+
+schemaspy というツールを docker で起動している。   
+(docker は別途 インストール、稼働させておく必要がある)
 
 テストの実行 (chrome headless で起動して system テストも行っている)  
 system テストで失敗すると、画面のスクリーンショットが ./tmp 以下に保存される。  
@@ -84,6 +105,10 @@ $ open tmp/metric_fu/output/index.html
 $ rails log:clear
 $ rails tmp:clear
 ```
+
+負荷テスト
+locust フォルダの README.md を参照してください。
+
 
 See
 - https://qiita.com/kaishuu0123/items/00b89e092f156a02a3e5
