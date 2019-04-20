@@ -28,8 +28,8 @@ jobs: # a collection of steps
       # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
       - restore_cache:
           keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
+            - rails_react_tutorial-{{ checksum "Gemfile.lock" }}
+            - rails_react_tutorial-
 
       - run: # Install Ruby dependencies
           name: Bundle Install
@@ -37,15 +37,15 @@ jobs: # a collection of steps
 
       # Store bundle cache for Ruby dependencies
       - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: rails_react_tutorial-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
       # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
+            - rails_react_tutorial-{{ checksum "yarn.lock" }}
+            - rails_react_tutorial-
 
       - run:
           name: Yarn Install
@@ -53,7 +53,7 @@ jobs: # a collection of steps
 
       # Store yarn / webpacker cache
       - save_cache:
-          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          key: rails_react_tutorial-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
 
@@ -76,19 +76,6 @@ jobs: # a collection of steps
                               --out test_results/rspec.xml \
                               --format documentation \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-
-      - run:
-          name: build api_blueprintdocument
-          command: |
-            bin/rails docs:generate
-      - run:
-          name: build html api_blueprintdocument
-          command: |
-            yarn aglio -i doc/api/index.apib -o doc/api/index.html \
-                --theme-template triple \
-                --theme-variables flatly
-      - store_artifacts:
-          path: doc
 
       - run:
           name: check brakeman
