@@ -1,5 +1,5 @@
 
-[![CircleCI](https://circleci.com/gh/katoy/rails_react_tutorial.svg?style=svg)](https://circleci.com/gh/katoy/rails_react_tutorial)
+[![CircleCI](https://circleci.com/gh/katoy/rails_react_tutorial.svg?style=svg)](https://circleci.com/gh/katoy/rails_react_tutorial) [![Greenkeeper badge](https://badges.greenkeeper.io/katoy/rails_react_tutorial.svg)](https://greenkeeper.io/)
 
 これは、 rails アプリの テストと github 連携の設定の練習レポジトリーです。  
 react をつかった 小さな アプリのサンプルコードを利用しています。  
