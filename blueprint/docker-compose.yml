@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  aglio:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - "../doc/api:/projects"
+    tty: true
+    command: aglio -i index.apib --theme-template triple --theme-variables flatly -s -h 0.0.0.0
+  drakov:
+    build: .
+    ports:
+      - "3001:3001"
+    volumes:
+      - "../doc/api:/projects"
+    tty: true
+    command: drakov -f "**/*.apib" --public --watch --p 3001
+
