@@ -84,8 +84,8 @@ jobs: # a collection of steps
           name: build html api_blueprintdocument
           command: |
             puchd blueprint
-	    ./run.sh
-	    popd
+            ./run.sh
+            popd
 
       - store_artifacts:
           path: doc
