@@ -5,7 +5,7 @@
     "bootstrap": "4.3.1",
     "flog": "0.0.1",
     "prop-types": "^15.6.2",
-    "react": "^16.7.0",
+    "react": "^16.12.0",
     "react-dom": "^16.7.0",
     "reactstrap": "^8.0.0"
   },
