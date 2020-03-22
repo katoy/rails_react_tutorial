@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@rails/webpacker": "3.6.0",
+    "@rails/webpacker": "5.0.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "4.3.1",
     "flog": "0.0.1",
